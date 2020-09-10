@@ -1,17 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Nuggets | JEA</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>Nuggets | JEA</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Compilation of scripts, snippets, tutorials for beginner developers">
 
-  <body>
-    <%= yield %>
-  </body>
+  <!-- CSS Files -->
+  <%
+=begin%>
+ <link href="assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" /> 
+<%
+=end%>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="wrapper ">
+    <%= render 'layouts/sidebar' %>
+    <div class="main-panel">
+      <%= render 'layouts/navbar' %>
+      <div class="content">
+        <div class="container-fluid">
+          <!-- your content here -->
+            <%= yield %>
+        </div>
+      </div>
+      <footer class="footer">
+        <%= render 'layouts/footer' %>
+      </footer>
+    </div>
+  </div>
+
+  <%
+=begin%>
+ <%= render 'layouts/material_design_core_js_files' %> 
+<%
+=end%>
+</body>
+
 </html>
