@@ -25,21 +25,23 @@
 </head>
 
 <body>
-  <div class="wrapper ">
-    <%= render 'layouts/sidebar' %>
-    <div class="main-panel">
-      <%= render 'layouts/navbar' %>
-      <div class="content">
-        <div class="container-fluid">
+  <div class="wrapper wrapper-full-page">
+    <div class="content">
+      <div class="container-fluid">
+        <%= render 'layouts/alert_box' %>
+
           <!-- your content here -->
-            <%= render 'layouts/alert_box' %>
-            <%= yield %>
-        </div>
+          <%= yield %>
       </div>
-      <footer class="footer">
-        <%= render 'layouts/footer' %>
-      </footer>
     </div>
+  </div>
+    <%
+=begin%>
+ <footer class="footer">
+      <%= render 'layouts/footer' %>
+    </footer> 
+<%
+=end%>
   </div>
 
   <%

@@ -55,3 +55,4 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'strong_migrations', '~> 0.7.1'
+gem 'devise', '~> 4.7', '>= 4.7.2'
