@@ -1,1 +1,6 @@
-@import '~material-dashboard/assets/scss/material-dashboard';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+// You can add any custom CSS after the components import but before the utilities import.
+
+/* Add any custom CSS here */
+@import "tailwindcss/utilities";
