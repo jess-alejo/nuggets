@@ -22,9 +22,9 @@
                 %svg.h-6.w-6{"aria-hidden" => "true", :fill => "none", :stroke => "currentColor", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
                   %path{:d => "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2"}
               / Profile dropdown
-              .ml-3.relative
+              .ml-3.relative{"data-controller" => "dropdown"}
                 %div
-                  %button#user-menu.max-w-xs.bg-gray-800.rounded-full.flex.items-center.text-sm.focus:outline-none.focus:ring-2.focus:ring-offset-2.focus:ring-offset-gray-800.focus:ring-white{"aria-haspopup" => "true"}
+                  %button#user-menu.max-w-xs.bg-gray-800.rounded-full.flex.items-center.text-sm.focus:outline-none.focus:ring-2.focus:ring-offset-2.focus:ring-offset-gray-800.focus:ring-white{"aria-haspopup" => "true", "data-action" => "click->dropdown#toggle click@window->dropdown#hide", :role => "button"}
                     %span.sr-only Open user menu
                     %img.h-8.w-8.rounded-full{:alt => "", :src => "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"}/
                 /
@@ -36,7 +36,7 @@
                   Leaving: "transition ease-in duration-75"
                   From: "transform opacity-100 scale-100"
                   To: "transform opacity-0 scale-95"
-                .origin-top-right.absolute.right-0.mt-2.w-48.rounded-md.shadow-lg.py-1.bg-white.ring-1.ring-black.ring-opacity-5{"aria-labelledby" => "user-menu", "aria-orientation" => "vertical", :role => "menu"}
+                .origin-top-right.absolute.right-0.mt-2.w-48.rounded-md.shadow-lg.py-1.bg-white.ring-1.ring-black.ring-opacity-5.hidden{"aria-labelledby" => "user-menu", "aria-orientation" => "vertical", :role => "menu", "data-dropdown-target" => "menu"}
                   %a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100{:href => "#", :role => "menuitem"} Your Profile
                   %a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100{:href => "#", :role => "menuitem"} Settings
                   %a.block.px-4.py-2.text-sm.text-gray-700.hover:bg-gray-100{:href => "#", :role => "menuitem"} Sign out
@@ -137,3 +137,20 @@
   -#           Deactivate
   -#         %button.mt-3.w-full.inline-flex.justify-center.rounded-md.border.border-gray-300.shadow-sm.px-4.py-2.bg-white.text-base.font-medium.text-gray-700.hover:bg-gray-50.focus:outline-none.focus:ring-2.focus:ring-offset-2.focus:ring-indigo-500.sm:mt-0.sm:ml-3.sm:w-auto.sm:text-sm{:type => "button"}
   -#           Cancel
+
+
+-# .inline-block.text-sm.px-4.py-2.leading-none.rounded.no-underline.text-gray.hover:text-gray-900.hover:bg-white.mt-4.lg:mt-0
+-#   .relative{"data-controller" => "dropdown"}
+-#     .inline-block.select-none{"data-action" => "click->dropdown#toggle click@window->dropdown#hide", :role => "button"}
+-#       %span.appearance-none.flex.items-center.inline-block.text-gray-700
+-#         - if current_user
+-#           = image_tag avatar_url_for(current_user), class: "rounded-full h-8 w-8 align-middle"
+-#         %svg.h-4.w-4{:viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+-#           %path{:d => "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"}
+-#     .absolute.right-0.mt-2.hidden{"data-dropdown-target" => "menu"}
+-#       .bg-white.shadow.rounded.border.overflow-hidden
+-#         = link_to 'Profile',  edit_user_registration_path, class: 'no-underline block pl-8 py-3 text-gray-900 bg-white hover:bg-gray-300 whitespace-no-wrap'
+-#         = link_to 'Password', password_path, class: 'no-underline block px-8 py-3 text-gray-900 bg-white  hover:bg-gray-300 whitespace-no-wrap'
+-#         = link_to 'Accounts', user_connected_accounts_path, class: 'no-underline block px-8 py-3 text-gray-900 bg-white  hover:bg-gray-300 whitespace-no-wrap'
+-#         = link_to 'Billing',  subscription_path, class: 'no-underline block px-8 py-3 text-gray-900 bg-white  hover:bg-gray-300 whitespace-no-wrap'
+-#         = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'no-underline block px-8 py-3 border-t text-gray-900 bg-white  hover:bg-gray-300 whitespace-no-wrap'
