@@ -18,3 +18,4 @@ require("channels")
 
 // import "packs/custom.js"
 import "stylesheets/application" // Add this line
+import "controllers"
